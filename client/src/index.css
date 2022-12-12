@@ -1,0 +1,17 @@
+* {scroll-behavior: smooth;}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Work Page */
+
+.img-container:hover .link__container {
+    opacity: .8;
+}
+.work {
+    scrollbar-width: none;
+}
+.work::-webkit-scrollbar {
+    display: none;
+    appearance: none;
+}
