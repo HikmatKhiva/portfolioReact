@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { client } from '../../server/client';
 import { ThemeContext } from '../../context/themeContext';
 import AppWrap from '../../Wrapper/AppWrap';
+import MotionWrap from '../../Wrapper/MotionWrap';
 const Contact = () => {
     const { theme } = useContext(ThemeContext);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [error, setError] = useState({ button: false });
     const [loading, setLoading] = useState(false);
     const handleChangeInput = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
     const sendMessage = (e) => {
         e.preventDefault();
         if (!formData.email.length) {
@@ -42,7 +45,7 @@ const Contact = () => {
         } catch (err) { toast.error('something went wrong ' + err.message) }
     }
     return (
-        <div style={{ height: `calc(100vh - 72px)` }} className="flex-grow overflow-hidden py-2">
+        <div className="flex-grow overflow-hidden py-2">
             <span className='2xl:text-5xl text-2xl block text-center mb-2'>Contact Me</span>
             <div className="form__center mt-4 xl:mt-24 flex items-center justify-center">
                 <form onSubmit={sendMessage} className="contact__form flex flex-col w-10/12 gap-4 md:w-96">
@@ -76,4 +79,4 @@ const Contact = () => {
     )
 }
 
-export default AppWrap(Contact, 'contact');
+export default AppWrap(MotionWrap(Contact, 'contact w-full'), 'contact');

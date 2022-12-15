@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 const ExperienceYear = ({ data }) => {
     return (
         <motion.div whileInView={{ scale: [0, 1] }} transition={{ duration: 1 }} key={data._id} className="experience-item flex w-full md:items-start items-center justify-between gap-4">
@@ -24,11 +23,6 @@ const ExperienceYear = ({ data }) => {
         </motion.div>
     )
 }
-ExperienceYear.propTypes = {
-    data: PropTypes.shape({
-        year: PropTypes.string,
-        works: PropTypes.array,
-    })
-}
+
 
 export default ExperienceYear

@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import propTypes from "prop-types";
 import { ThemeContext } from "../../context/themeContext";
 
 export const MenuToggle = ({ toggle }) => {
@@ -41,7 +40,3 @@ export const MenuToggle = ({ toggle }) => {
     </button>
   )
 };
-MenuToggle.propTypes = {
-  isOpen: propTypes.bool,
-  onToggle: propTypes.func
-}

@@ -12,7 +12,7 @@ const SocialLink = () => {
         }
     }, [])
     return (
-        <motion.div className='flex md:flex-col absolute md:w-10 md:left-2 md:-translate-x-0  z-10 bottom-0 left-1/2 -translate-x-1/2 py-4 gap-2'>
+        <motion.div className='flex md:flex-col absolute md:w-10 md:left-2 md:-translate-x-0 z-10 bottom-2 left-1/2 -translate-x-1/2 py-4 gap-2'>
             {link && link.map((link, index) => (
                 <motion.div whileHover={{ scale: 1.1 }} whileInView={{ y: [30, 0] }} key={link._id} className="cursor-pointer  social-item sm:w-11 sm:h-11 w-10 h-10 ">
                     <a href={link.url} target='_blank' rel='noopener noreferrer'>

@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import { motion } from 'framer-motion';
-
 import { Sidebar } from '../Sidebar/Sidebar';
 import { ThemeContext } from '../../context/themeContext';
 const navLink = ['home', 'skills', 'work', 'contact'];
-import anonymous from '../../assets/anonymous-mask.svg';
-import ip from '../../assets/web-address-64.png';
 import { UserInfoContext } from '../../context/UserInfo';
 const Navbar = () => {
     const { userInfo } = useContext(UserInfoContext);
     const { theme, setTheme } = useContext(ThemeContext);
-    const handleChangeTheme = () => setTheme((prev) => ({ ...prev, isActive: !theme.isActive }))
+    const handleChangeTheme = () => setTheme((prev) => ({ ...prev, isActive: !theme.isActive }));
     return (
         <>
             <nav
@@ -40,10 +37,10 @@ const Navbar = () => {
                         whileInView={{ scale: [0, 1], rotate: [45, 0] }}
                         transition={{ duration: 0.5 }}
                     >
-                        {!theme.isActive ? <BsFillSunFill className='text-yellow-400 text-2xl' /> : <BsFillMoonFill className='text-gray-600 text-2xl' />}
+                        {!theme.isActive ? <motion.span whileInView={{ rotate: [90, 0] }}> <BsFillSunFill className='text-yellow-400 text-2xl' /></motion.span> : <BsFillMoonFill className='text-gray-600 text-2xl' />}
                     </motion.button>
                     {userInfo?.ip ? <>
-                        <img data-for='ip' data-tip className='w-8 h-8 mt-2' src={ip} alt="anonymousMask" />
+                        <img data-for='ip' data-tip className='w-8 h-8 mt-2' src='./web-address-64.png' alt="anonymousMask" />
                         <ReactTooltip
                             id='ip'
                             effect='solid'
@@ -53,7 +50,7 @@ const Navbar = () => {
                         </ReactTooltip>
                     </> :
                         <>
-                            <img data-for='anonymous' data-tip className='w-8 h-8 mt-2 cursor-pointer' src={anonymous} alt="anonymousMask" />
+                            <img data-for='anonymous' data-tip className='w-8 h-8 mt-2 cursor-pointer' src='./anonymous-mask.svg' alt="anonymousMask" />
                             <ReactTooltip
                                 id='anonymous'
                                 effect='solid'

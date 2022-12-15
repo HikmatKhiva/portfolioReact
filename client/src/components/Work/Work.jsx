@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import { BsGithub, BsEye } from 'react-icons/bs';
 import { ThemeContext } from '../../context/themeContext';
 import { urlFor } from '../../server/client';
-const WorkItem = ({ project, id, animatedCard }) => {
+const Work = ({ project, id, animatedCard }) => {
     const { theme } = useContext(ThemeContext);
     return (
         <motion.div
@@ -13,7 +12,7 @@ const WorkItem = ({ project, id, animatedCard }) => {
             whileInView={{ y: [100, 0,], opacity: [0, 1] }}
             whileHover={{ scale: 1 }}
             transition={{ duration: .9 }}
-            className={`work__item ${theme.isActive ? 'bg-gray-300 shadow-gray-700 transition duration-300  hover:shadow-gray-800 text-gray-900' : 'bg-slate-600 '} p-2 rounded relative h-60 w-60 xl:w-[250px] xl:h-[330px] shadow-2xl  `}>
+            className={`work__item ${theme.isActive ? 'bg-gray-300 shadow-gray-700 transition duration-300  hover:shadow-gray-800 text-gray-900' : 'bg-slate-600 '} p-2 rounded relative h-60 mx-auto w-[90%] xl:w-[250px] xl:h-[330px] shadow-2xl  `}>
             <div className="img-container h-[70%] cursor-pointer relative ">
                 <img className='w-full h-full rounded opacity-100' src={urlFor(project.image)} alt={project.workTitle} />
                 <span className={`absolute link__container rounded w-full h-full transition duration-300  ${theme.isActive ? 'bg-slate-600' : 'bg-gray-900'} top-0 left-0 opacity-0 flex items-center justify-center gap-4 `}>
@@ -29,12 +28,4 @@ const WorkItem = ({ project, id, animatedCard }) => {
         </motion.div>
     )
 }
-
-WorkItem.propTypes = {
-    project: PropTypes.object,
-    theme: PropTypes.object,
-    id: PropTypes.string,
-    animatedCard: PropTypes.object
-}
-
-export default WorkItem;
+export default Work;

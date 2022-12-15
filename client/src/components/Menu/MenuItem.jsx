@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ThemeContext } from '../../context/themeContext';
 import { useContext } from "react";
-import propTypes from "prop-types";
 const variants = {
   open: {
     y: 0,
@@ -37,9 +36,3 @@ export const MenuItem = ({ value, index, toggleOpen }) => {
     </motion.li>
   );
 };
-
-MenuItem.propTypes = {
-  value: propTypes.string,
-  index: propTypes.number,
-  toggleOpen: propTypes.func
-}

@@ -19,6 +19,21 @@ export default {
             type: 'string',
         },
         {
+            name:'animatedCardBg',
+            title: 'Animated Card Background',
+            type: 'string',
+        },
+        {
+            name:'skillExperience',
+            title: 'Skill Experience',
+            type:'string',
+        },
+        {
+            name:'progressBg',
+            title: 'Progress Background',
+            type:'string',
+        },
+        {
             name: 'icon',
             title: 'Icon',
             type: 'image',

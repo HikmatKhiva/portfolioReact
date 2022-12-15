@@ -8,13 +8,13 @@ const LazyApp = React.lazy(() => import('./App'));
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <ThemeContextProvider>
-    <UserInfoContextProvider>
-      <React.Suspense fallback={<Loading />}>
-        <LazyApp />
-      </React.Suspense>
-    </UserInfoContextProvider>
-  </ThemeContextProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <ThemeContextProvider>
+      <UserInfoContextProvider>
+        <React.Suspense fallback={<Loading />}>
+          <LazyApp />
+        </React.Suspense>
+      </UserInfoContextProvider>
+    </ThemeContextProvider>
+  </React.StrictMode>
 )

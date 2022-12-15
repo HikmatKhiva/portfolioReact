@@ -1,6 +1,5 @@
 import React, { useContext, useRef } from "react";
 import { motion, useCycle } from "framer-motion";
-import propTypes from "prop-types";
 
 import { useDimensions } from '../../hook/useDimensions';
 import { MenuToggle } from '../Menu/MenuToggle'
@@ -26,11 +25,13 @@ const sidebar = {
     }
   }
 };
+
 export const Sidebar = ({ navLink }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+
   return (
     <motion.div
       className="md:hidden fixed w-full"
@@ -39,7 +40,7 @@ export const Sidebar = ({ navLink }) => {
       custom={height}
       ref={containerRef}
     >
-      <motion.div className={`background ${theme.isActive ? theme.light + " shadow-2xl" : theme.dark + " shadow-2xl shadow-gray-800"}  fixed top-[64px] right-0 h-screen  w-1/2 ${theme.isActive ? 'border-l-2' :'border-l-2 border-gray-600'} ${!isOpen && 'hidden'}`} variants={sidebar} >
+      <motion.div className={`background ${theme.isActive ? theme.light + " shadow-2xl" : theme.dark + " shadow-2xl shadow-gray-800"}  fixed top-[64px] right-0 h-screen w-[90%]  md:w-1/2 ${theme.isActive ? 'border-l-2' : 'border-l-2 border-gray-600'} ${!isOpen && 'hidden'}`} variants={sidebar} >
         <motion.ul className=" h-full w-full flex items-center justify-center flex-col gap-4">
           {navLink.map((value, index) => (
             <MenuItem toggleOpen={toggleOpen} value={value} index={index} key={index} />
@@ -51,12 +52,3 @@ export const Sidebar = ({ navLink }) => {
   );
 };
 
-Sidebar.propTypes = {
-  isOpen: propTypes.bool,
-  nav: propTypes.arrayOf(
-    propTypes.shape({
-      name: propTypes.string,
-      link: propTypes.string,
-    })
-  ),
-}

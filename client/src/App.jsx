@@ -1,12 +1,17 @@
 import React, { useEffect, useRef, useState } from "react"
-import { Toaster } from "react-hot-toast";
-import { Helmet } from 'react-helmet';
+import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
+import 'react-toastify/dist/ReactToastify.css';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { client } from './server/client';
 import { Navbar } from "./components/export"
-import { Home, Skills, Work, Contact } from "./pages/export";
+import { Home, Skills, Works, Contact } from "./pages/export";
 import useGetUserApi from "./hook/useGetUserApi";
+
 function App() {
+
   const userAgree = useRef(false);
+  const effectRun = useRef(true)
   const { getUserApi, alertUser } = useGetUserApi();
   const [seo, setSeo] = useState(null);
   const [icon, setIcon] = useState(null);
@@ -15,17 +20,12 @@ function App() {
   const querySeoIcon = '*[_type == "seo"]{"seo":icon.asset->url}';
 
   useEffect(() => {
-    const unsubscribe = () => {
+    if (effectRun.current) {
       client.fetch(querySeo).then(res => setSeo(res[0]));
       client.fetch(querySeoIcon).then(res => setIcon(res[0]));
-    }
-    unsubscribe()
-    return () => unsubscribe();
-  }, []);
-  useEffect(() => {
-    const unSub = () => {
       let storage = JSON.parse(localStorage.getItem('userAgreed'));
       userAgree.current = storage?.userAgreed
+      effectRun.current = false;
       if (userAgree.current) {
         getUserApi()
       }
@@ -33,15 +33,12 @@ function App() {
         alertUser()
       }
     }
-    unSub()
-    return () => unSub()
-  }, []);
+  }, [])
 
   return (
-    <>
+    <HelmetProvider>
       {/* Seo Meta tag Data*/}
       <Helmet >
-
         {/* Seo Icon */}
         {icon?.seo && <link rel="icon" type="image/png" href={icon.seo} sizes="16x16" />}
 
@@ -66,6 +63,8 @@ function App() {
         {seo?.yandexVerificationCode && <meta name="yandex-verification" content={seo.yandexVerificationCode} />}
 
       </Helmet>
+      {/* React Toastify */}
+      <ToastContainer />
       {/*React Hot Toast options */}
       <Toaster
         position="top-center"
@@ -77,13 +76,12 @@ function App() {
           },
         }}
       />
-      
       <Navbar />
       <Home />
       <Skills />
-      <Work />
+      <Works />
       <Contact />
-    </>
+    </HelmetProvider>
   )
 }
 export default App;
