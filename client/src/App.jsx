@@ -56,7 +56,7 @@ function App() {
         {seo?.ogDescription && <meta property="og:description" content={seo.ogDescription} />}
 
         {/* Google Seo Verification Code */}
-        {seo?.googleVerificationCode && <meta property="google:verification_code" content={seo.googleVerificationCode} />}
+        {seo?.googleVerificationCode && <meta name="google-site-verification" content={seo.googleVerificationCode} />}
 
         {/* Yandex Seo Verification Code */}
 
