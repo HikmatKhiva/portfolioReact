@@ -31,7 +31,7 @@ const Home = () => {
         </motion.div>
         {/* Programming */}
         <div className='flex justify-between'>
-          <motion.div data-for='html' data-tip className={`cursor-pointer  ${theme.isActive ? 'bg-orange-300' : theme.dark + " border-orange-600"} -left-32 -top-0 ${multipleClass} `}>
+          <motion.div whileInView={{x:[20,0]}} data-for='html' data-tip className={`cursor-pointer  ${theme.isActive ? 'bg-orange-300' : theme.dark + " border-orange-600"} -left-32 -top-0 ${multipleClass} `}>
             <motion.img whileTap={{ scale: 0.6 }} className="w-10/12 h-10/12" src='./html.png' alt="html" />
             <ReactTooltip
               id='html'
@@ -44,7 +44,7 @@ const Home = () => {
               {'HTML'}
             </ReactTooltip>
           </motion.div>
-          <motion.div data-for="css" data-tip whileInView={{ scale: [0, 1] }} transition={{ duration: 2 }} className={`cursor-pointer ${theme.isActive ? 'bg-blue-300' : 'bg-gray-700' + " border-blue-600"} -top-28 left-24 ${multipleClass} `}>
+          <motion.div data-for="css" data-tip whileInView={{ scale: [0, 1] }} transition={{ duration: 2 }} className={`cursor-pointer ${theme.isActive ? 'bg-blue-300' : 'bg-gray-700' + " border-blue-600"} -top-24 left-24 ${multipleClass} `}>
             <motion.img whileTap={{ scale: 0.6 }} className="w-10/12 h-10/12" src='./css.png' alt="css" />
             <ReactTooltip
               backgroundColor='#264de4'
@@ -55,7 +55,7 @@ const Home = () => {
               {"CSS"}
             </ReactTooltip>
           </motion.div>
-          <motion.div data-for="javascript" data-tip className={`cursor-pointer ${theme.isActive ? 'bg-amber-200' : theme.dark + " border-amber-600"} -right-32 top-0 ${multipleClass} `}>
+          <motion.div whileInView={{x:[-20,0]}}  data-for="javascript" data-tip className={`cursor-pointer ${theme.isActive ? 'bg-amber-200' : theme.dark + " border-amber-600"} -right-32 top-0 ${multipleClass} `}>
             <motion.img whileTap={{ scale: 0.6 }} className="w-full h-full rounded-full" src="./javascript.png" alt="javascript" />
             <ReactTooltip
               backgroundColor='rgb(217,119,16)'

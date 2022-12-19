@@ -46,7 +46,7 @@ const Contact = () => {
     }
     return (
         <div className="flex-grow overflow-hidden py-2">
-            <span className='2xl:text-5xl text-2xl block text-center mb-2'>Contact Me</span>
+            <span className='2xl:text-5xl text-3xl block text-center mb-2'>Contact Me</span>
             <div className="form__center mt-4 xl:mt-24 flex items-center justify-center">
                 <form onSubmit={sendMessage} className="contact__form flex flex-col w-10/12 gap-4 md:w-96">
                     <input

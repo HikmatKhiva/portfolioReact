@@ -26,7 +26,7 @@ const Navbar = () => {
                 <div className="items-center hidden space-x-8 md:flex lg:flex">
                     {navLink.map((link, index) => (
                         <a key={index} href={'#' + link} className={`flex ${theme.isActive ? 'text-gray-600' : 'text-white'} capitalize hover:text-blue-500
-                        cursor-pointer transition-colors duration-300`}>
+                        cursor-pointer font-medium transition-colors duration-300`}>
                             {link}
                         </a>
                     ))}

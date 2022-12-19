@@ -8,15 +8,15 @@ const ExperienceYear = ({ data }) => {
                 {data.year}
             </span>
             {data.works && data?.works.map((work) => (
-                <div key={work._key} className="flex-col flex ">
-                    <span className="company 2xl:text-2xl text-end text-lg">{work.company}</span>
-                    <span data-for={work.company} data-tip className="position 2xl:text-xl text-base">{work.position}</span>
+                <div key={work?._key} className="flex-col flex ">
+                    <span className="company 2xl:text-2xl text-end text-lg">{work?.company}</span>
+                    <span data-for={work?.company} data-tip className="position 2xl:text-xl text-base">{work?.position}</span>
                     <ReactTooltip
-                        id={work.company}
+                        id={work?.company}
                         effect="solid"
                         place="left"
                     >
-                        {work.desc}
+                        {work?.desc}
                     </ReactTooltip>
                 </div>
             ))}

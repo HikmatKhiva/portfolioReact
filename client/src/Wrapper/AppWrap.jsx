@@ -8,7 +8,7 @@ const AppWrap = (Component, idName, classNames) => function HOC() {
     
     return (
         <div className={`pt-16 ${theme.isActive ? theme.light + ' text-gray-900' : theme.dark + ' text-white'}`} id={idName}>
-            <div style={{ height: `calc(100vh - 64px)` }} className="wrapper md:pl-4 flex relative overflow-hidden">
+            <div style={{ minHeight: `calc(100vh - 64px)` }} className="wrapper md:pl-4 flex relative ">
                 <SocialLink />
                 <Component />
                 <NavigationsDot idName={idName} />
