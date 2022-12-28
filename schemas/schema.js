@@ -13,6 +13,8 @@ import socialLink from './socialLink';
 import contact from './contact';
 import userIp from './userIp';
 import seo from './seo';
+import certificate from './certificate';
+import myCertificates from './myCertificates';
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -20,5 +22,5 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    mainTitle, skills, experience, workExperience, resume, work, filterWork, socialLink, contact, userIp,seo]),
+    mainTitle, skills, experience, workExperience, resume, work, filterWork, socialLink, contact, userIp, seo, certificate, myCertificates]),
 })
