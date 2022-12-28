@@ -1,19 +1,18 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Work } from '../../components/export';
-import AppWrap from '../../Wrapper/AppWrap';
 import { client } from '../../server/client';
 import { ThemeContext } from '../../context/themeContext';
+import AppWrap from '../../Wrapper/AppWrap';
 import MotionWrap from '../../Wrapper/MotionWrap';
 const Works = () => {
-    const effectRun = useRef(true)
+    const effectRun = useRef(true);
     const [filter, setFilter] = useState([]);
     const [activeFilter, setActiveFilter] = useState('All');
     const [animatedCard, setAnimatedCard] = useState({ y: 0, opacity: 1 });
     const [filterProject, setFilterProject] = useState([]);
     const [projects, setProjects] = useState([]);
     const { theme } = useContext(ThemeContext);
-
     useEffect(() => {
         if (effectRun.current) {
             const queryFilter = `*[_type == "filter"]`;
@@ -26,7 +25,6 @@ const Works = () => {
             effectRun.current = false;
         }
     }, [])
-
     const handleWorkFilter = (value) => {
         setActiveFilter(value);
         setAnimatedCard({ y: 100, opacity: 1 });
@@ -39,7 +37,7 @@ const Works = () => {
     }
     return (
         <div className="flex-grow py-4  work gap-y-6">
-            <span className='2xl:text-5xl text-3xl block text-center mb-2'>Work</span>
+            <span className='2xl:text-4xl text-3xl block text-center mb-2'>Work</span>
             <div className="container__buttons flex-wrap flex justify-center my-8 gap-4">
                 {filter.name && filter?.name.map((name, index) => (
                     <button onClick={() => handleWorkFilter(name)} key={index} className={`text-sm md:text-base border ${name === activeFilter && 'bg-blue-500 border-none'} p-1 ${theme.isActive && 'border-gray-500 hover:text-white'} rounded px-2 hover:bg-blue-500 hover:border-blue-500`}>{name}</button>
@@ -51,7 +49,7 @@ const Works = () => {
                 transition={{ duration: 0.5, delayChildren: 0.5 }}
             >
                 {filterProject.length ? filterProject.map(project => (
-                    <div className='h-[330px] work__item w-full md:w-[300px] p-2  relative xl:h-[350px]' key={project._id}>
+                    <div className='h-[350px] work__item w-full md:w-[350px] p-2  relative ' key={project._id}>
                         <Work project={project} id={project._id} />
                     </div>
                 )) : ''}
@@ -60,5 +58,4 @@ const Works = () => {
         </div >
     )
 }
-
 export default AppWrap(MotionWrap(Works, 'work w-full'), 'work');

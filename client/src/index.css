@@ -1,4 +1,7 @@
-* {scroll-behavior: smooth;}
+* {
+    scroll-behavior: smooth;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,10 +11,32 @@
 .img-container:hover .link__container {
     opacity: .8;
 }
+
 .work {
     scrollbar-width: none;
 }
+
 .work::-webkit-scrollbar {
     display: none;
     appearance: none;
+}
+
+.react-pdf__Page__annotations {
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    .react-pdf__Page__canvas {
+        width: 90% !important;
+        height: 400px !important;
+        margin: 0 auto !important;
+        object-fit: contain !important;
+    }
+}
+
+@media screen and (max-width:578px){
+    #skills .social__links {
+        /* bottom: -45px; */
+    }
+    
 }

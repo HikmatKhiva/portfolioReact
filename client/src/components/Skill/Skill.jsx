@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import { motion } from 'framer-motion';
 import { urlFor } from '../../server/client';
+import PropTypes from 'prop-types';
 const Skill = ({ skill, filterSkill }) => {
     return (
         <motion.div
@@ -27,7 +28,8 @@ const Skill = ({ skill, filterSkill }) => {
         </motion.div>
     )
 }
-
-
-
+Skill.propTypes = {
+    skill: PropTypes.object.isRequired,
+    filterSkill: PropTypes.func.isRequired
+}
 export default Skill;

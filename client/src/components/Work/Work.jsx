@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { BsGithub, BsEye } from 'react-icons/bs';
 import { ThemeContext } from '../../context/themeContext';
 import { urlFor } from '../../server/client';
-const Work = ({ project, id, animatedCard }) => {
+const Work = ({ project, id }) => {
     const { theme } = useContext(ThemeContext);
     return (
         <motion.div
-            animate={animatedCard}
             key={id}
             whileInView={{ y: [50, 0,], opacity: [0, 1] }}
             whileHover={{ scale: 1 }}
@@ -23,9 +23,13 @@ const Work = ({ project, id, animatedCard }) => {
             <span className={`absolute inline-block ${theme.isActive ? 'bg-gray-300 text-gray-600' : 'bg-slate-600 '} top-0 rounded p-1 px-2  text-white font-semibold left-1/2 -translate-x-1/2 `}>{project.title ? project.title : 'Web App'}</span>
             <div className="desc  flex rounded h-[30%] flex-col  p-2">
                 <span className='work__title self-center lg:text-xl font-medium text-lg'>{project?.workTitle}</span>
-                <p className='work__title w-full text-sm font-medium space-x-0.5'>{project.description && project?.description} </p>
+                <p className='work__title w-full text-center  text-sm font-medium space-x-0.5'>{project.description && project?.description} </p>
             </div>
         </motion.div>
     )
+}
+Work.propTypes = {
+    project: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
 }
 export default Work;

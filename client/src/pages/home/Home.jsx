@@ -2,14 +2,12 @@ import ReactTooltip from 'react-tooltip';
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
-import MotionWrap from '../../Wrapper/MotionWrap';
 import { ThemeContext } from '../../context/themeContext';
+import MotionWrap from '../../Wrapper/MotionWrap';
 import AppWrap from '../../Wrapper/AppWrap';
 import { client, urlFor } from '../../server/client';
-// Import Images
 const multipleClass = 'flex items-center justify-center rounded-full border-2 p-2 md:absolute md:w-20 md:h-20 h-16 w-16';
 const Home = () => {
-
   const { theme } = useContext(ThemeContext);
   const [person, setPerson] = useState({
     about: [],
@@ -79,5 +77,4 @@ const Home = () => {
     </div>
   )
 }
-
 export default AppWrap(MotionWrap(Home, 'flex w-full'), 'home');

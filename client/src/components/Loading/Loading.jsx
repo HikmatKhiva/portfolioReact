@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BarLoader } from 'react-spinners'
-
+import { BarLoader } from 'react-spinners';
 const Loading = () => {
     return (
         <div className='loading flex-col gap-10 bg-gradient-to-r from-orange-700 via-gray-900 to-blue-500 h-screen flex items-center justify-center'>
@@ -22,4 +21,4 @@ const Loading = () => {
         </div>
     )
 }
-export default Loading
+export default Loading;

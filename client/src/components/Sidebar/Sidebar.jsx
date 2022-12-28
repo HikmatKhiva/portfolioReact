@@ -1,37 +1,16 @@
-import React, { useContext, useRef } from "react";
-import { motion, useCycle } from "framer-motion";
-
+import React, { useContext, useRef } from 'react';
+import { motion, useCycle } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { useDimensions } from '../../hook/useDimensions';
-import { MenuToggle } from '../Menu/MenuToggle'
-import { MenuItem } from '../Menu/MenuItem'
-import { ThemeContext } from "../../context/themeContext";
-
-const sidebar = {
-  open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
-    transition: {
-      type: "spring",
-      stiffness: 20,
-      restDelta: 2
-    }
-  }),
-  closed: {
-    clipPath: "circle(30px at 40px 40px)",
-    transition: {
-      delay: 0.5,
-      type: "spring",
-      stiffness: 400,
-      damping: 40
-    }
-  }
-};
-
-export const Sidebar = ({ navLink }) => {
+import MenuToggle from '../Menu/MenuToggle';
+import MenuItem from '../Menu/MenuItem';
+import { ThemeContext } from '../../context/themeContext';
+import { sidebar } from '../../motionOption/options';
+const Sidebar = ({ navLink }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
   const { theme } = useContext(ThemeContext);
-
   return (
     <motion.div
       className="md:hidden fixed w-full"
@@ -51,4 +30,7 @@ export const Sidebar = ({ navLink }) => {
     </motion.div>
   );
 };
-
+Sidebar.propTypes = {
+  navLink: PropTypes.array
+}
+export default Sidebar;

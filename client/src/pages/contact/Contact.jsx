@@ -12,7 +12,6 @@ const Contact = () => {
     const [error, setError] = useState({ button: false });
     const [loading, setLoading] = useState(false);
     const handleChangeInput = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
     const sendMessage = (e) => {
         e.preventDefault();
         if (!formData.email.length) {
@@ -41,12 +40,12 @@ const Contact = () => {
             setLoading(true);
             client.create(contact).then(() => { toast.success(`${formData.name} thank your message send`) });
             setLoading(false);
-            setFormData({ name: '', email: '', message: '' })
+            setFormData({ name: '', email: '', message: '' });
         } catch (err) { toast.error('something went wrong ' + err.message) }
     }
     return (
-        <div className="flex-grow overflow-hidden py-2">
-            <span className='2xl:text-5xl text-3xl block text-center mb-2'>Contact Me</span>
+        <div className="flex-grow overflow-hidden py-4">
+            <span className='2xl:text-4xl text-3xl block text-center mb-2'>Contact Me</span>
             <div className="form__center mt-4 xl:mt-24 flex items-center justify-center">
                 <form onSubmit={sendMessage} className="contact__form flex flex-col w-10/12 gap-4 md:w-96">
                     <input
@@ -54,17 +53,17 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChangeInput}
-                        className={`border-b ${!formData.email.length && error.button ? 'border-red-500 placeholder:text-red-500 ' : 'border-gray-500'} text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-1 md:py-3`}
+                        className={`border-b ${!formData.email.length && error.button ? 'border-red-500 placeholder:text-red-500 ' : 'border-gray-500'} text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-3`}
                         placeholder='Enter Your Email Address' />
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChangeInput}
-                        className={`border-b ${!formData.name.length && error.button ? 'border-red-500 placeholder:text-red-500' : 'border-gray-500'}  text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-1 md:py-3`}
+                        className={`border-b ${!formData.name.length && error.button ? 'border-red-500 placeholder:text-red-500' : 'border-gray-500'}  text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-3`}
                         placeholder='Enter Your Name' />
                     <textarea
-                        className={`border-b ${!formData.message.length && error.button ? 'border-red-500 placeholder:text-red-500' : 'border-gray-500'} text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-1 md:py-3 h-24 md:h-52 resize-none`}
+                        className={`border-b ${!formData.message.length && error.button ? 'border-red-500 placeholder:text-red-500' : 'border-gray-500'} text-sm md:text-xl ${theme.isActive ? 'border-gray-500 text-gray-700 placeholder:text-gray-700' : 'placeholder:text-white'} bg-transparent outline-none py-3 h-24 md:h-52 resize-none`}
                         placeholder="Enter Your Message"
                         value={formData.message}
                         onChange={handleChangeInput}
@@ -78,5 +77,4 @@ const Contact = () => {
         </div>
     )
 }
-
-export default AppWrap(MotionWrap(Contact, 'contact w-full'), 'contact');
+export default AppWrap(MotionWrap(Contact, 'contact w-full items-center h-full'), 'contact','justify-center');

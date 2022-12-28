@@ -1,8 +1,8 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { ThemeContext } from "../../context/themeContext";
-
-export const MenuToggle = ({ toggle }) => {
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ThemeContext } from '../../context/themeContext';
+import PropTypes from 'prop-types';
+const MenuToggle = ({ toggle }) => {
   const { theme } = React.useContext(ThemeContext);
   const Path = props => (
     <motion.path
@@ -40,3 +40,7 @@ export const MenuToggle = ({ toggle }) => {
     </button>
   )
 };
+MenuToggle.propTypes = {
+  toggle: PropTypes.func.isRequired,
+}
+export default MenuToggle;
