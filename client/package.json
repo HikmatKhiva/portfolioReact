@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sanity/client": "^3.4.1",
+    "@sanity/client": "^4.0.0",
     "@sanity/image-url": "^1.0.1",
     "file-saver": "^2.0.5",
     "framer-motion": "^7.6.17",
