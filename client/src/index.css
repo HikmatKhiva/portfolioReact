@@ -1,12 +1,7 @@
-* {
-    scroll-behavior: smooth;
-}
-
+* {scroll-behavior: smooth;}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Work Page */
 .img-container:hover .link__container {
     opacity: .8;
 }
