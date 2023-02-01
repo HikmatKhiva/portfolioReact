@@ -16,9 +16,9 @@ const Navbar = () => {
             fixed top-0 left-0 right-0 z-50`}>
             <div className="flex items-center">
                 <a href='#home' className="cursor-pointer">
-                    <span className={`text-2xl font-medium ${theme.isActive ? 'text-blue-500' : 'text-white'}`}>
+                    <h1 className={`text-2xl font-medium ${theme.isActive ? 'text-blue-500' : 'text-white'}`}>
                         Hikmat
-                    </span>
+                    </h1>
                 </a>
             </div>
             <div className="items-center hidden space-x-8 md:flex lg:flex">
