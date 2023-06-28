@@ -6,7 +6,7 @@ import { useZustandStore } from "../zustand";
 const Navbar = () => {
   const { navLink } = useZustandStore();
   return (
-    <nav className="dark:bg-gray-900 bg-gray-100 py-4 px-4 md:px-0 shadow-md z-20 w-full sticky top-0 z-50">
+    <nav className="dark:bg-gray-900 bg-gray-100 py-4 px-4 md:px-0 shadow-md w-full sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="#home" className="cursor-pointer">
