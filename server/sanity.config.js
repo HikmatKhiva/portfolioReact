@@ -5,10 +5,10 @@ import { schemaTypes } from './schemas/schema'
 
 export default defineConfig({
   name: 'default',
-  title: 'portfolio_backend',
+  title: '', /* your project Title */
 
-  projectId: '94zea0li',
-  dataset: 'production',
+  projectId: '', /* here projectId  */
+  dataset: '', /* your project dataset */
 
   plugins: [deskTool(), visionTool()],
 
