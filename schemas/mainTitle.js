@@ -17,7 +17,7 @@ export default {
             type: 'array',
             of: [
                 {
-                    name: 'text',
+                    name: 'matn',
                     title: 'Text Your Self',
                     type: 'string'
                 },

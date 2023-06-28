@@ -1,0 +1,6 @@
+export {default as moon} from './icons/moon.svg'
+export {default as sun} from './icons/sun.svg'
+export {default as close} from './icons/close.svg'
+export {default as downloadIcon} from './icons/download.svg'
+export {default as github} from './icons/github.svg'
+export {default as eye} from './icons/eye.svg'

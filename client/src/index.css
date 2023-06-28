@@ -1,25 +1,50 @@
-* {scroll-behavior: smooth;}
+* {
+  scroll-behavior: smooth;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.home {
+  min-height: 600px;
+}
 .img-container:hover .link__container {
-    opacity: .8;
+  opacity: 0.8;
 }
 .work {
-    scrollbar-width: none;
+  scrollbar-width: none;
+}
+.aspected {
+  aspect-ratio: 67/50;
+  object-fit: cover;
+}
+.skill-aspect {
+  aspect-ratio: 4 / 3;
+}
+.home-icon {
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 .work::-webkit-scrollbar {
-    display: none;
-    appearance: none;
+  display: none;
+  appearance: none;
 }
-.react-pdf__Page__annotations {
-    display: none;
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-@media screen and (max-width:768px) {
-    .react-pdf__Page__canvas {
-        width: 90% !important;
-        height: 400px !important;
-        margin: 0 auto !important;
-        object-fit: contain !important;
-    }
+.react-pdf__Page__annotations,
+.react-pdf__Page__textContent {
+  display: none;
+}
+.home_skill {
+  @apply flex items-center justify-center rounded-full border-2 p-2 md:absolute md:w-20 md:h-20 h-16 w-16;
+}
+@media screen and (max-width: 768px) {
+  .react-pdf__Page__canvas {
+    width: 90% !important;
+    height: 350px !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+  }
 }

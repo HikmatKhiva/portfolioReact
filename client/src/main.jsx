@@ -1,18 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { ThemeContextProvider } from './context/themeContext'
-import './index.css'
-import Loading from './components/Loading/Loading';
-import { UserInfoContextProvider } from './context/UserInfo';
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import './index.css';
+import { Loading } from './components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import 'react-lazy-load-image-component/src/effects/blur.css'; /* lazy load css */
 const LazyApp = React.lazy(() => import('./App'));
-ReactDOM.createRoot(document.getElementById('root')).render(
+const queryClient = new QueryClient();
+const app = document.getElementById('root');
+const root = createRoot(app);
+root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <UserInfoContextProvider>
-        <React.Suspense fallback={<Loading />}>
-          <LazyApp />
-        </React.Suspense>
-      </UserInfoContextProvider>
-    </ThemeContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <React.Suspense fallback={<Loading />}>
+        <LazyApp />
+      </React.Suspense>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   </React.StrictMode>
-)
+);

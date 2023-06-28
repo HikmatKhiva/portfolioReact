@@ -1,16 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-
-const MotionWrap = (Component, classNames) => function HOC() {
+import React from 'react'
+import {motion} from 'framer-motion'
+import {Loading} from '../components'
+const MotionWrap = (Component, classNames, idName) =>
+  function HOC() {
     return (
+      <React.Suspense fallback={Loading}>
         <motion.div
-            whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
-            transition={{ duration: 0.5 }}
-            className={`${classNames}`}
+          transition={{duration: 0.5}}
+          className={`${classNames}`}
+          id={idName}
+          whileInView={{y: [100, 50, 0], opacity: [0, 0, 1]}}
         >
-            <Component />
+          <Component />
         </motion.div>
+      </React.Suspense>
     )
-}
-
+  }
 export default MotionWrap
