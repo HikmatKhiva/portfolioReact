@@ -16,7 +16,7 @@ const Sidebar = ({navLink}) => {
       ref={containerRef}
     >
       <motion.div
-        className="background shadow-2xl  fixed top-[72px] right-0 h-screen w-full "
+        className="background shadow-2xl  fixed top-[64px] right-0 h-screen w-full "
         variants={sidebar}
       >
         <div onClick={CloseMobileNav} className="flex-grow"></div>

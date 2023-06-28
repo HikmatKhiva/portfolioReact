@@ -1,5 +1,4 @@
 export {default as Navbar} from './Navbar'
-export {default as NavigationsDot} from './NavigationsDot'
 export {default as Work} from './Work.jsx'
 export {default as Skill} from './Skill.jsx'
 export {default as experienceYear} from './experienceYear'

@@ -9,11 +9,12 @@ import 'swiper/css/pagination'
 // import required modules
 import MotionWrap from '../../Wrapper/MotionWrap'
 import {PdfView} from '../../components'
-import {download} from '../../setting/downloadFunc'
 import useGetQueriyes from '../../hook/useGetQueriyes'
 import {queryCertificate} from '../../server/queries'
+import { useZustandStore } from '../../zustand'
 const MyCertificate = () => {
   const [{data: certificate}] = useGetQueriyes([queryCertificate])
+  const {downloadFile} = useZustandStore()
   return (
     <div className="flex justify-center items-center py-4 dark:text-white h-full flex-col relative">
       <span className="2xl:text-4xl text-3xl block text-center mb-4">My Certificates</span>
@@ -38,7 +39,7 @@ const MyCertificate = () => {
               <PdfView url={certificateUrl.certificate} />
               <motion.button
                 hidden={certificate === null}
-                onClick={() => download(certificateUrl.certificate, 'certificate')}
+                onClick={() => downloadFile(certificateUrl.certificate, 'certificate')}
                 transition={{duration: 1}}
                 whileInView={{opacity: [0, 1]}}
                 className="mt-4 font-medium self-center relative left-1/2 -translate-x-1/2"
