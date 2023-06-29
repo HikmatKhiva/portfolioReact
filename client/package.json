@@ -24,7 +24,7 @@
     "react-toastify": "^9.1.1",
     "react-tooltip": "^4.5.1",
     "swiper": "^9.4.1",
-    "typewriter-effect": "^2.19.0",
+    "typewriter-effect": "^2.20.1",
     "zustand": "^4.3.8"
   },
   "devDependencies": {
