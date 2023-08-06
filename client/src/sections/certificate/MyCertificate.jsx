@@ -1,25 +1,25 @@
-import {motion} from 'framer-motion'
-import {downloadIcon} from '../../assets'
-// Import Swiper React components
-import {Swiper, SwiperSlide} from 'swiper/react'
-import {Pagination} from 'swiper'
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-// import required modules
-import MotionWrap from '../../Wrapper/MotionWrap'
-import {PdfView} from '../../components'
-import useGetQueriyes from '../../hook/useGetQueriyes'
-import {queryCertificate} from '../../server/queries'
-import { useZustandStore } from '../../zustand'
+import { motion } from "framer-motion";
+import { downloadIcon } from "../../assets";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import MotionWrap from "../../Wrapper/MotionWrap";
+import { PdfView } from "../../components";
+import useGetQueriyes from "../../hook/useGetQueriyes";
+import { queryCertificate } from "../../server/queries";
+import { useZustandStore } from "../../zustand";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const MyCertificate = () => {
-  const [{data: certificate}] = useGetQueriyes([queryCertificate])
-  const {downloadFile} = useZustandStore()
+  const [{ data: certificate }] = useGetQueriyes([queryCertificate]);
+  const { downloadFile } = useZustandStore();
   return (
     <div className="flex justify-center items-center py-4 dark:text-white h-full flex-col relative">
-      <span className="2xl:text-4xl text-3xl block text-center mb-4">My Certificates</span>
+      <h2 className="2xl:text-4xl text-3xl block text-center mb-4">
+        My Certificates
+      </h2>
       <Swiper
-        effect={'fade'}
+        effect={"fade"}
         modules={[Pagination]}
         autoplay={{
           delay: 2000,
@@ -39,21 +39,29 @@ const MyCertificate = () => {
               <PdfView url={certificateUrl.certificate} />
               <motion.button
                 hidden={certificate === null}
-                onClick={() => downloadFile(certificateUrl.certificate, 'certificate')}
-                transition={{duration: 1}}
-                whileInView={{opacity: [0, 1]}}
+                aria-label="download certificate"
+                onClick={() =>
+                  downloadFile(certificateUrl.certificate, "certificate")
+                }
+                transition={{ duration: 1 }}
+                whileInView={{ opacity: [0, 1] }}
                 className="mt-4 font-medium self-center relative left-1/2 -translate-x-1/2"
               >
-                <img src={downloadIcon} alt="download-icon" />
+                <LazyLoadImage
+                  src={downloadIcon}
+                  effect="blur"
+                  className="h-7 w-7 obeject-cover"
+                  alt="download-icon"
+                />
               </motion.button>
             </SwiperSlide>
           ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};
 export default MotionWrap(
   MyCertificate,
-  'certificate w-full overflow-x-hidden flex-grow',
-  'certificate'
-)
+  "certificate w-full overflow-x-hidden flex-grow",
+  "certificate"
+);

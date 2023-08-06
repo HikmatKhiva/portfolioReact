@@ -13,7 +13,7 @@ export const sidebar = {
     opacity: 0,
     display: 'none',
     transition: {
-      delay: 0.5,
+      delay: 0.2,
       type: 'spring',
       stiffness: 400,
       damping: 40,

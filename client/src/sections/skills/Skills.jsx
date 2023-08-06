@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Skill, PdfView, AnimatedSkill } from "../../components";
 import MotionWrap from "../../Wrapper/MotionWrap";
-import ExperienceYear from "../../components/experienceYear";
+import ExperienceYear from "../../components/ExperienceYear";
 import useGetQueriyes from "../../hook/useGetQueriyes";
 import {
   queryExperience,
@@ -23,9 +23,9 @@ const Skills = () => {
     skill.filter((skill) => skill._id === id && handleSelect(skill));
   return (
     <section className="flex-grow py-10 lex overflow-hidden dark:text-white relative items-center flex-col gap-y-6">
-      <span className="2xl:text-4xl text-3xl block text-center mb-2">
+      <h2 className="2xl:text-4xl text-3xl block text-center mb-2">
         Skills & Experience
-      </span>
+      </h2>
       <div className="flex md:w-1/2 w-10/12 md:gap-y-8 gap-y-2  mx-auto flex-wrap justify-center py-4 ">
         {/* Skills Container Start */}
         <div className="left flex-grow xl:w-1/2  w-full skills-container flex justify-center 2xl:justify-start flex-wrap gap-4">

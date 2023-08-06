@@ -36,7 +36,7 @@ const Works = () => {
   }
   return (
     <div className="flex-grow py-4 dark:text-white work gap-y-6">
-      <span className="2xl:text-4xl text-3xl block text-center mb-2">Work</span>
+      <h2 className="2xl:text-4xl text-3xl block text-center mb-2">Work</h2>
       <div className="container__buttons flex-wrap flex justify-center my-8 gap-4">
         {filter.name &&
           filter?.name.map((name, index) => (

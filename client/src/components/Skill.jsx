@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactTooltip from 'react-tooltip'
-import {motion} from 'framer-motion'
-import {urlFor} from '../server/client'
-import PropTypes from 'prop-types'
-import {fadeCard} from '../motionOption/options'
-const Skill = ({skill, filterSkill, index}) => {
+import React from "react";
+import { Tooltip } from "react-tooltip";
+import { motion } from "framer-motion";
+import { urlFor } from "../server/client";
+import PropTypes from "prop-types";
+import { fadeCard } from "../motionOption/options";
+const Skill = ({ skill, filterSkill, index }) => {
   return (
     <motion.div
       layoutId={skill._id}
@@ -12,27 +12,32 @@ const Skill = ({skill, filterSkill, index}) => {
       variants={fadeCard(0.3 * index)}
       animate="finished"
       initial="start"
-      data-tip
-      data-for={skill?.name}
-      style={{background: skill?.bgColor}}
-      className="skills-item cursor-pointer rounded-full relative p-2 w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16"
+      data-tooltip-id={skill?.name}
+      data-tooltip-content={skill?.company}
+      data-tooltip-place="top"
+      style={{ background: skill?.bgColor }}
+      className="skills-item grid place-items-center cursor-pointer rounded-full relative p-2 w-12 h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16"
     >
       <motion.img
-        animate={{rotate: skill.name == 'React' ? [180, 0] : [0, 0]}}
-        transition={{duration: 3, ease: 'linear', repeat: Infinity}}
+        animate={{ rotate: skill.name == "React" ? [180, 0] : [0, 0] }}
+        transition={{ duration: 3, ease: "linear", repeat: Infinity }}
         src={urlFor(skill?.icon)}
-        className='h-10 w-10 object-contain skill-aspect'
+        className="h-10 w-10 object-contain skill-aspect"
         alt={skill?.name}
       />
-      <ReactTooltip backgroundColor={skill?.tooltipColor || '#000'} id={skill?.name} effect="solid">
+      <Tooltip
+        style={{ background: skill?.tooltipColor || "#000" }}
+        id={skill?.name}
+        effect="solid"
+      >
         {skill?.name}
-      </ReactTooltip>
+      </Tooltip>
     </motion.div>
-  )
-}
+  );
+};
 Skill.propTypes = {
   skill: PropTypes.object.isRequired,
   filterSkill: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
-}
-export default Skill
+};
+export default Skill;

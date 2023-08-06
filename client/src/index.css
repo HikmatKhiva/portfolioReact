@@ -15,7 +15,7 @@
 }
 .aspected {
   aspect-ratio: 67/50;
-  object-fit: cover;
+  object-fit: contain;
 }
 .skill-aspect {
   aspect-ratio: 4 / 3;

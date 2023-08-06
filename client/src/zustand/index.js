@@ -2,22 +2,32 @@ import { create } from "zustand";
 import { saveAs } from "file-saver";
 export const useZustandStore = create((set) => ({
   //  States
-  mobileNav: false,
   selectedSkill: null,
   showResume: false,
-  userInfo: null,
+  // Functions
+  handleSelect: (skill) => set(() => ({ selectedSkill: skill })),
+  clearSelectSkill: () => set(() => ({ selectedSkill: null })),
+  toggleShowResume: () => set((state) => ({ showResume: !state.showResume })),
+  downloadFile: (fileUrl, name) => {
+    saveAs(fileUrl, name);
+  },
+}));
+export const NavigationStates = create((set) => ({
+  mobileNav: false,
   themeColor: "",
-  navLink: ["home", "skills", "certificate", "work", "contact"],
   // Functions
   toggleMobileNav: () => set((state) => ({ mobileNav: !state.mobileNav })),
   CloseMobileNav: () =>
     set((state) => ({ mobileNav: state.mobileNav == false })),
-  handleSelect: (skill) => set(() => ({ selectedSkill: skill })),
-  clearSelectSkill: () => set(() => ({ selectedSkill: null })),
+  // Theme
   handleChangeTheme: (color) => set(() => ({ themeColor: color })),
-  toggleShowResume: () => set((state) => ({ showResume: !state.showResume })),
+}));
+
+/*save Client IP address */
+export const useClientInfo = create((set) => ({
+  alertUser: true,
+  userInfo: null,
   updateUserInfo: (user) => set(() => ({ userInfo: user })),
-  downloadFile: (fileUrl, name) => {
-    saveAs(fileUrl, name);
-  },
+  hideAlert: () => set(() => ({ alertUser: false })),
+  showAlert: () => set(() => ({ alertUser: true })),
 }));

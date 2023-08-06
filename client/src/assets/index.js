@@ -12,3 +12,4 @@ export { default as css } from "./images/css.png";
 export { default as react } from "./images/react.png";
 export { default as js } from "./images/javascript.png";
 export { default as address } from "./images/web-address-64.png";
+export { default as Hikmat } from "./images/Hikmat.jpg";

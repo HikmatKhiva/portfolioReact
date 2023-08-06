@@ -13,14 +13,14 @@ const Work = ({project, id, index}) => {
       transition={{delay: 0.2 * index}}
       className="bg-gray-300 h-[350px] work__item w-full md:w-[350px] p-2  relative dark:text-white rounded shadow-gray-300 dark:shadow-gray-900 transition duration-300 hover:shadow-gray-800 text-gray-900 dark:bg-gray-800  shadow-2xl  "
     >
-      <div className="img-container h-[70%] cursor-pointer rounded-t relative ">
+      <div className="img-container h-[70%] cursor-pointer rounded-t relative flex justify-center">
         <LazyLoadImage
           className="w-full h-full aspected rounded opacity-100"
           src={urlFor(project?.image)}
           effect="blur"
           alt={project?.workTitle}
         />
-        <div className="absolute link__container rounded-t w-full h-[250px] transition duration-300  bg-slate-400 dark:bg-gray-900 top-0 left-0 opacity-0 flex items-center justify-center gap-4">
+        <div className="absolute link__container rounded-t w-full h-full transition duration-300  bg-slate-400 dark:bg-gray-900 top-0 left-0 opacity-0 flex items-center justify-center gap-4">
           {project.gitUrl && (
             <a href={project.gitUrl} target="_blank" rel="noopener noreferrer">
               <img src={github} alt="github" />
