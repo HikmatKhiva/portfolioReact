@@ -11,7 +11,7 @@
   "dependencies": {
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
-    "@tanstack/react-query": "^4.29.14",
+    "@tanstack/react-query": "^4.29.25",
     "file-saver": "^2.0.5",
     "framer-motion": "^7.6.17",
     "react": "^18.2.0",
