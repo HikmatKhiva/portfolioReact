@@ -1,4 +1,3 @@
-import React from "react";
 import { Tooltip } from "react-tooltip";
 import { motion } from "framer-motion";
 import { urlFor } from "../server/client";
@@ -10,8 +9,18 @@ const Skill = ({ skill, filterSkill, index }) => {
       layoutId={skill._id}
       onClick={() => filterSkill(skill._id)}
       variants={fadeCard(0.3 * index)}
-      animate="finished"
       initial="start"
+      whileInView="finished"
+      whileHover={{
+        y: [10, 0, 10, 0],
+        transition: {
+          duration: 1.5,
+          repeat: Infinity,
+          repeatDelay: 0.3,
+          type: "spring",
+        },
+      }}
+      animate={{ scale: [1, 1.5] }}
       data-tooltip-id={skill?.name}
       data-tooltip-content={skill?.company}
       data-tooltip-place="top"

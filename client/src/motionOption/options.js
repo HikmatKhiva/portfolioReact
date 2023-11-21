@@ -26,7 +26,7 @@ export const MenuItemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: {stiffness: 1000, velocity: -100},
+      y: {stiffness: 1000},
     },
   },
   closed: {

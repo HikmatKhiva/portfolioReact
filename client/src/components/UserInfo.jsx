@@ -1,27 +1,28 @@
-import React from "react";
 import { Tooltip } from "react-tooltip";
 import { anonymous, address } from "../assets";
-import { useClientInfo } from "../zustand";
+import { handleAlertClick } from "../redux/reducer/client";
+import { useSelector, useDispatch } from "react-redux";
 const UserInfo = () => {
-  const { userInfo, showAlert, hideAlert } = useClientInfo();
+  const { clientInfo } = useSelector((state) => state.client);
+  const { themeColor } = useSelector((state) => state.settings);
+  const dispatch = useDispatch();
   const show = () => {
-    showAlert();
-    setTimeout(() => hideAlert(), 6000);
+    dispatch(handleAlertClick({ type: "show" }));
+    setTimeout(() => dispatch(handleAlertClick({ type: "hide" })), 6000);
   };
   return (
     <div onClick={show}>
-      {userInfo?.ip ? (
+      {clientInfo?.ip ? (
         <>
           <img
             data-tooltip-id="ip"
-            className="w-8 h-8 mt-2"
+            className={`w-8 h-8 mt-2  ${themeColor === 'dark' && 'white-image'}`}
             src={address}
             alt="location"
           />
-          <Tooltip
-          id="ip" place="bottom" type="dark" effect="solid">
-            <span> Your Ip {userInfo?.ip}</span> <br />
-            <span> Your City {userInfo?.city}</span>
+          <Tooltip id="ip" place="bottom" type="dark" effect="solid">
+            <span> Your Ip {clientInfo?.ip}</span> <br />
+            <span> Your City {clientInfo?.city}</span>
           </Tooltip>
         </>
       ) : (
@@ -41,5 +42,4 @@ const UserInfo = () => {
     </div>
   );
 };
-
 export default UserInfo;

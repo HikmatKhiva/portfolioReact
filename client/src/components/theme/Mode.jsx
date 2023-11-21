@@ -1,19 +1,8 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { moon, sun } from "../../assets";
-import { NavigationStates } from "../../zustand";
+import useTheme from "../../hook/useTheme";
 const Mode = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
-  const colorTheme = theme == "light" ? "dark" : "light";
-  const { handleChangeTheme } = NavigationStates();
-  useEffect(() => {
-    handleChangeTheme(theme);
-    const root = window.document.documentElement;
-    root.classList.remove(colorTheme);
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme, colorTheme]);
+  const { theme, toggleTheme } = useTheme();
   return (
     <motion.button
       onClick={toggleTheme}

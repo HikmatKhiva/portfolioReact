@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { client } from "../../server/client";
 import MotionWrap from "../../Wrapper/MotionWrap";
 const Contact = () => {
@@ -45,7 +44,7 @@ const Contact = () => {
     }
   };
   return (
-    <div className="flex-grow overflow-hidden dark:text-white py-10">
+    <section className="flex-grow overflow-hidden dark:text-white py-10">
       <h2 className="2xl:text-4xl text-3xl block text-center mb-2">
         Contact With Me
       </h2>
@@ -100,7 +99,7 @@ const Contact = () => {
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 export default MotionWrap(

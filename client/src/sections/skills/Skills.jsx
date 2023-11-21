@@ -1,26 +1,21 @@
-import { motion } from "framer-motion";
-import { Skill, PdfView, AnimatedSkill } from "../../components";
+import { Skill, AnimatedSkill } from "../../components";
 import MotionWrap from "../../Wrapper/MotionWrap";
 import ExperienceYear from "../../components/ExperienceYear";
-import useGetQueriyes from "../../hook/useGetQueriyes";
-import {
-  queryExperience,
-  queryResume,
-  querySkills,
-} from "../../server/queries";
-import { useZustandStore } from "../../zustand";
+import useGetQueries from "../../hook/useGetQueries";
+import { queryExperience, querySkills } from "../../server/queries";
+import { useDispatch, useSelector } from "react-redux";
+import { handleSkill } from "../../redux/reducer/skills";
 const Skills = () => {
-  const {
-    selectedSkill,
-    handleSelect,
-    showResume,
-    toggleShowResume,
-    downloadFile,
-  } = useZustandStore();
-  const [{ data: experience }, { data: resume }, { data: skill }] =
-    useGetQueriyes([queryExperience, queryResume, querySkills]);
+  const { selectedSkill } = useSelector((state) => state.skills);
+  const dispatch = useDispatch();
+  const [{ data: experience }, { data: skill }] = useGetQueries([
+    queryExperience,
+    querySkills,
+  ]);
   const filterSkill = (id) =>
-    skill.filter((skill) => skill._id === id && handleSelect(skill));
+    skill.filter(
+      (skill) => skill._id === id && dispatch(handleSkill({ skill: skill }))
+    );
   return (
     <section className="flex-grow py-10 lex overflow-hidden dark:text-white relative items-center flex-col gap-y-6">
       <h2 className="2xl:text-4xl text-3xl block text-center mb-2">
@@ -54,31 +49,6 @@ const Skills = () => {
         </div>
         {/* Experience Container End */}
       </div>
-      {/* My resume */}
-      {/* View Resume */}
-      {showResume && (
-        <motion.div className="flex justify-center drop-shadow-lg mt-5">
-          {resume && <PdfView url={resume[0].resume} />}
-        </motion.div>
-      )}
-      <motion.div className="md:pt-7 py-1 lg:w-full text-center flex gap-4 justify-center">
-        {resume && (
-          <motion.button
-            whileInView={{ opacity: [0, 1] }}
-            onClick={() => downloadFile(resume[0].resume, "resume")}
-            className="border cursor-pointer py-2 px-1 md:py-3 md:px-2 rounded hover:bg-blue-500 border-blue-500 text-blue-500 hover:text-white transition duration-300 font-medium"
-          >
-            Download Resume
-          </motion.button>
-        )}
-        <motion.button
-          whileInView={{ opacity: [0, 1] }}
-          onClick={toggleShowResume}
-          className="border cursor-pointer py-3 px-2 rounded hover:bg-blue-500 border-blue-500 text-blue-500 hover:text-white transition duration-300 font-medium"
-        >
-          {showResume ? "Hidden" : "Show resume"}
-        </motion.button>
-      </motion.div>
     </section>
   );
 };

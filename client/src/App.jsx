@@ -1,7 +1,7 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Modal, Navbar } from "./components";
+// Sections
 const Home = React.lazy(() => import("./sections/home/Home"));
 const Skills = React.lazy(() => import("./sections/skills/Skills"));
 const MyCertificate = React.lazy(() =>
@@ -9,24 +9,30 @@ const MyCertificate = React.lazy(() =>
 );
 const Works = React.lazy(() => import("./sections/work/Work"));
 const Contact = React.lazy(() => import("./sections/contact/Contact"));
-import SocialLink from "./components/SocialLink";
+const Service = React.lazy(() => import("./sections/service/Service"));
+const Resume = React.lazy(() => import("./sections/cv/Resume"));
+//layouts
+import Navbar from "./layouts/Navbar";
+// Components
+import { Modal, SocialLink } from "./components";
 function App() {
   return (
     <>
-      {/* React Toastify */}
-      <Modal />
-      <ToastContainer />
-      <SocialLink />
       <Navbar />
       <main>
         <div className="container mx-auto">
           <Home />
           <Skills />
+          <Resume />
           <MyCertificate />
           <Works />
+          <Service />
           <Contact />
         </div>
       </main>
+      <Modal />
+      <ToastContainer />
+      <SocialLink />
     </>
   );
 }

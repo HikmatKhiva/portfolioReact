@@ -1,7 +1,12 @@
 {
   "name": "react_portfolio",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.2.0",
+  "author": {
+    "email": "xikmatkhiva.4s@gmail.com",
+    "name": "Hikmatbek Bekturdiyev",
+    "url": "https://github.com/HikmatKhiva"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@tanstack/react-query": "^4.29.14",
@@ -18,12 +24,12 @@
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.6.0",
     "react-pdf": "^6.2.0",
+    "react-redux": "^8.1.2",
     "react-spinners": "^0.13.7",
     "react-toastify": "^9.1.1",
     "react-tooltip": "^5.18.0",
     "swiper": "^9.4.1",
-    "typewriter-effect": "^2.19.0",
-    "zustand": "^4.3.8"
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

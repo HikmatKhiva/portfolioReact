@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { NavigationStates } from "../../zustand";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMobileNav } from "../../redux/reducer/settings"
 const MenuToggle = () => {
-  const { toggleMobileNav, themeColor } = NavigationStates();
+  const dispatch = useDispatch()
+  const { themeColor } = useSelector(state => state.settings)
   const Path = (props) => (
     <motion.path
       fill="transparent"
@@ -17,7 +19,7 @@ const MenuToggle = () => {
       type="button"
       aria-label="theme-control"
       role="button"
-      onClick={toggleMobileNav}
+      onClick={() => dispatch(toggleMobileNav())}
     >
       <svg
         width="23"

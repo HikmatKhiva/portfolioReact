@@ -1,6 +1,4 @@
-import React from 'react';
-import { Document, Page } from "react-pdf";
-import { pdfjs } from 'react-pdf';
+import { Document, Page } from "react-pdf";import { pdfjs } from 'react-pdf';
 import PropTypes from 'prop-types';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';

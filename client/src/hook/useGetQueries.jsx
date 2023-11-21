@@ -1,6 +1,6 @@
 import { useQueries } from '@tanstack/react-query'
 import { client } from '../server/client'
-const useGetQueriyes = (queries) => {
+const useGetQueries = (queries) => {
   const queryData = useQueries({
     queries: queries.map((q) => {
       return {
@@ -11,4 +11,4 @@ const useGetQueriyes = (queries) => {
   })
   return queryData
 }
-export default useGetQueriyes
+export default useGetQueries

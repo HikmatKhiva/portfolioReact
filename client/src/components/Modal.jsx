@@ -1,80 +1,52 @@
 import { useEffect } from "react";
-import { useClientInfo } from "../zustand";
 import { client } from "../server/client";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateClientInfo,
+  handleAlertClick,
+  clearClientInfo,
+} from "../redux/reducer/client";
+import useIP from "../hook/useIP";
+import newIP from "../server/newIP";
 const Modal = () => {
-  const { alertUser, hideAlert, updateUserInfo, userInfo } = useClientInfo();
+  const dispatch = useDispatch();
+  const { ip } = useIP();
+  const { clientInfo, alertClient } = useSelector((state) => state.client);
   useEffect(() => {
-    setTimeout(() => hideAlert(), 6000);
+    setTimeout(() => dispatch(handleAlertClick({ type: "hide" })), 6000);
   }, []);
-  const handleCloseBtn = () => hideAlert();
+  const handleCloseBtn = () => dispatch(handleAlertClick({ type: "hide" }));
   const saveIP = async () => {
     try {
-      const getApi = await fetch("https://ipapi.co/json");
-      const data = await getApi.json();
-      updateUserInfo(data);
-      const newIP = {
-        _type: "userIp",
-        country: data?.country_name,
-        city: data?.city,
-        ip: data?.ip,
-        network: data?.network,
-        latitude: data?.latitude,
-        longitude: data?.longitude,
-        country_calling_code: data?.country_calling_code,
-      };
-      if (data) {
-        client.create(newIP);
+      dispatch(updateClientInfo({ client: ip }));
+      if (ip) {
+        client.create(newIP(ip));
         toast.success("Your Ip address saved 😎");
       }
-      hideAlert();
+      dispatch(handleAlertClick("hide"));
     } catch (err) {
       console.log(err);
     }
   };
   const hideIp = () => {
-    updateUserInfo(null);
-    hideAlert();
+    dispatch(clearClientInfo());
+    toast.success("You are anonymous!");
   };
-  if (userInfo?.ip) {
-    return (
-      <>
-        <div
-          className={`fixed ${
-            alertUser ? "top-5" : "top-[-1000px]"
-          } transition-all duration-700 w-96 bg-gray-800 py-4 rounded-md -translate-x-1/2 p-3 text-center text-white left-1/2 z-[9999]`}
-          role="dialog"
-        >
-          <h2 className="text-xl">You want hide IP address ?</h2>
-          <div className="flex mt-2 gap-2">
-            <button
-              onClick={hideIp}
-              className="rounded-md bg-green-600 hover:bg-green-500 flex-grow p-1"
-            >
-              Yes
-            </button>
-            <button
-              onClick={handleCloseBtn}
-              className="rounded-md bg-red-600 hover:bg-red-500 flex-grow p-1"
-            >
-              No
-            </button>
-          </div>
-        </div>
-      </>
-    );
-  }
   return (
     <div
       className={`fixed ${
-        alertUser ? "top-5" : "top-[-1000px]"
-      } transition-all duration-700 w-96 bg-gray-800 py-4 rounded-md -translate-x-1/2 p-3 text-center text-white left-1/2 z-[9999]`}
-      role="dialog"
+        alertClient ? "top-5" : "top-[-1000px]"
+      } transition-all duration-700 w-96 text-gray-800 shadow-md bg-gray-200 dark:bg-gray-800 py-4 rounded-md -translate-x-1/2 p-3 text-center dark:text-white left-1/2 z-[9999]`}
     >
-      <h2 className="text-xl">Can I save Your IP address ?</h2>
+      <h2 className="text-xl">
+        {clientInfo?.ip
+          ? "You want hide IP address ?"
+          : "Can I save Your IP address ?"}
+      </h2>
       <div className="flex mt-2 gap-2">
         <button
-          onClick={saveIP}
+          onClick={() => (clientInfo ? hideIp() : saveIP())}
           className="rounded-md bg-green-600 hover:bg-green-500 flex-grow p-1"
         >
           Yes

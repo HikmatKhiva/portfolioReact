@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { BarLoader } from "react-spinners";
 import { html, css, react } from "../assets";

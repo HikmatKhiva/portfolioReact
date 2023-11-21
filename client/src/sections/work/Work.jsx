@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 import {Work} from '../../components'
 import {client} from '../../server/client'
@@ -65,4 +65,4 @@ const Works = () => {
     </div>
   )
 }
-export default MotionWrap(Works, 'work w-full', 'work')
+export default MotionWrap(Works, 'work w-full', 'work');

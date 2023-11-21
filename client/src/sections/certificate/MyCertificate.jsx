@@ -1,28 +1,27 @@
 import { motion } from "framer-motion";
 import { downloadIcon } from "../../assets";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import MotionWrap from "../../Wrapper/MotionWrap";
 import { PdfView } from "../../components";
-import useGetQueriyes from "../../hook/useGetQueriyes";
+import useGetQuery from "../../hook/useGetQuery";
 import { queryCertificate } from "../../server/queries";
-import { useZustandStore } from "../../zustand";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { saveAs } from "file-saver";
 const MyCertificate = () => {
-  const [{ data: certificate }] = useGetQueriyes([queryCertificate]);
-  const { downloadFile } = useZustandStore();
+  const { data: certificate } = useGetQuery("certificates", queryCertificate);
   return (
-    <div className="flex justify-center items-center py-4 dark:text-white h-full flex-col relative">
+    <section className="flex justify-center items-center py-4 dark:text-white h-full flex-col relative">
       <h2 className="2xl:text-4xl text-3xl block text-center mb-4">
         My Certificates
       </h2>
       <Swiper
         effect={"fade"}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         autoplay={{
-          delay: 2000,
+          delay: 3000,
         }}
         coverflowEffect={{
           rotate: 50,
@@ -40,9 +39,7 @@ const MyCertificate = () => {
               <motion.button
                 hidden={certificate === null}
                 aria-label="download certificate"
-                onClick={() =>
-                  downloadFile(certificateUrl.certificate, "certificate")
-                }
+                onClick={() => saveAs(certificateUrl.certificate, "certificat")}
                 transition={{ duration: 1 }}
                 whileInView={{ opacity: [0, 1] }}
                 className="mt-4 font-medium self-center relative left-1/2 -translate-x-1/2"
@@ -57,7 +54,7 @@ const MyCertificate = () => {
             </SwiperSlide>
           ))}
       </Swiper>
-    </div>
+    </section>
   );
 };
 export default MotionWrap(
