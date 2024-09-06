@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
-    "@sanity/client": "^3.4.1",
+    "@sanity/client": "^6.15.5",
     "@sanity/image-url": "^1.0.1",
     "@tanstack/react-query": "^4.29.14",
     "file-saver": "^2.0.5",
